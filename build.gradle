@@ -3,11 +3,9 @@ buildscript {
         maven { url = 'https://maven.minecraftforge.net/' }
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
     }
-
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
-        annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     }
 }
 
@@ -15,14 +13,21 @@ plugins {
     id 'eclipse'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'org.spongepowered.mixin'
 }
+
+apply plugin: 'org.spongepowered.mixin'
 
 version = '1.0.0'
 group = 'net.sirjain.convenient_hitboxes'
 archivesBaseName = 'convenient_hitboxes'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+mixin {
+    add sourceSets.main, "convenient_hitboxes.refmap.json"
+
+    config "convenient_hitboxes.mixins.json"
+}
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
@@ -95,13 +100,14 @@ minecraft {
     }
 }
 
-mixin {
-    add sourceSets.main, "convenient_hitboxes.refmap.json"
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-    config "convenient_hitboxes.mixins.json"
+repositories {
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.4'
+}
 
 jar {
     manifest {

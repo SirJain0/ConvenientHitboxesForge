@@ -1,0 +1,7 @@
+{
+  "gui.entity_hitbox.disabled": "Enable Hitbox Visibility",
+  "gui.entity_hitbox.enabled": "Disable Hitbox Visibility",
+
+  "debug.show_hitboxes.on": "Hitboxes: shown",
+  "debug.show_hitboxes.off": "Hitboxes: hidden"
+}

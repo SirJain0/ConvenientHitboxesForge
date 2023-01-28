@@ -1,11 +1,10 @@
 {
   "required": true,
-  "package": "net.sirjain.convenient_hitboxes",
+  "package": "net.sirjain.convenient_hitboxes.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "modid.refmap.json",
   "mixins": [
-  ],
-  "client": [
+    "ControlsScreenMixin"
   ],
   "minVersion": "0.8"
 }
