@@ -2,7 +2,7 @@
   "required": true,
   "package": "net.sirjain.convenient_hitboxes.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "modid.refmap.json",
+  "refmap": "convenient_hitboxes.refmap.json",
   "mixins": [
     "ControlsScreenMixin"
   ],
