@@ -1,7 +1,9 @@
 package net.sirjain.convenient_hitboxes.mixin;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Options;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.OptionsSubScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.controls.ControlsScreen;
 import net.minecraft.network.chat.Component;
@@ -11,9 +13,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ControlsScreen.class)
-public class ControlsScreenMixin extends Screen {
-    protected ControlsScreenMixin(Component p_96550_) {
-        super(p_96550_);
+public class ControlsScreenMixin extends OptionsSubScreen {
+    public ControlsScreenMixin(Screen p_96284_, Options p_96285_, Component p_96286_) {
+        super(p_96284_, p_96285_, p_96286_);
     }
 
     @Inject(at = @At("HEAD"), method = "init()V")
