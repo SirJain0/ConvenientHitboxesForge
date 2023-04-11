@@ -18,14 +18,11 @@ public class ControlsScreenMixin extends Screen {
 
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
-        assert this.minecraft != null;
+        if (this.minecraft == null) return;
 
         // Adds the button
         this.addRenderableWidget(
-            new Button(
-                (this.width / 2 - 102) + 107,
-                (this.height / 6 - 12) + 48,
-                150, 20,
+            Button.builder(
                 !this.minecraft.getEntityRenderDispatcher().shouldRenderHitBoxes() ? Component.translatable("gui.entity_hitbox.disabled") : Component.translatable("gui.entity_hitbox.enabled"),
                 (p_96278_) -> {
                     this.minecraft.getEntityRenderDispatcher().setRenderHitBoxes(!this.minecraft.getEntityRenderDispatcher().shouldRenderHitBoxes());
@@ -33,11 +30,13 @@ public class ControlsScreenMixin extends Screen {
                     this.debugFeedbackTranslated(!this.minecraft.getEntityRenderDispatcher().shouldRenderHitBoxes() ? "debug.show_hitboxes.off" : "debug.show_hitboxes.on");
                 }
             )
+            .bounds(this.width / 2 - 75, this.height / 2 + 20, 150, 20)
+            .build()
         );
     }
 
     private void debugComponent(ChatFormatting p_167825_, Component p_167826_) {
-        assert this.minecraft != null;
+        if (this.minecraft == null) return;
         this.minecraft.gui.getChat().addMessage(Component.empty().append(Component.translatable("debug.prefix").withStyle(p_167825_, ChatFormatting.BOLD)).append(" ").append(p_167826_));
     }
 
