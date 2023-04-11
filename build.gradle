@@ -21,7 +21,7 @@ dependencies {
 
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.0.0'
+version = '1.0.2'
 group = 'net.sirjain.convenient_hitboxes'
 archivesBaseName = 'convenient_hitboxes'
 
@@ -35,7 +35,7 @@ mixin {
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.19.2'
+    mappings channel: 'official', version: '1.19.4'
 
     runs {
         client {
@@ -110,7 +110,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.4'
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.6'
 }
 
 jar {
